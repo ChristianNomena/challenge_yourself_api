@@ -15,14 +15,14 @@ You can find all the libraries you need to start the API in the file "requiremen
 # run
 Execute the "main.py" file to run the API
 
-# routes
-The routes are made for API operations (GET/POST/PUT/DELETE)
-
 # models
 The models represent the structures in database
 We can manipulate the models to make operations and not with SQL requests
 
-### User
+# routes
+The routes are made for API operations (GET/POST/PUT/DELETE)
+
+## User
 GET /users : Get users list
 GET /users/{userID} : Get specific user information
 POST /users : Create an user with body {'pseudo': pseudo, 'mail': mail, 'password': password}
