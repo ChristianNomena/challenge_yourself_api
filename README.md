@@ -23,7 +23,7 @@ We can manipulate the models to make operations and not with SQL requests
 The routes are made for API operations (GET/POST/PUT/DELETE)
 
 ### User
-GET /users : Get users list
-GET /users/{userID} : Get specific user information
-POST /users : Create an user with body {'pseudo': pseudo, 'mail': mail, 'password': password}
+GET /users : Get users list ---
+GET /users/{userID} : Get specific user information ---
+POST /users : Create an user with body {'pseudo': pseudo, 'mail': mail, 'password': password} ---
 DELETE /users/{userID} : Delete an user
