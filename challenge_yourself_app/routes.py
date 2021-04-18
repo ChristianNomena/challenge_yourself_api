@@ -4,9 +4,13 @@ from .models import Utilisateur
 import hashlib
 
 
+local_database = 'mysql://root:@localhost/challenge_yourself'
+global_database = 'mysql://ih1xsuhf3bj02xkl:j14jybwp8pwgx0se@ulsq0qqx999wqz84.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/c4bdcxxeljjwyoh4'
+
+
 app = Flask(__name__)
 app.secret_key = "challenge-^05e77o%aki4ivleu$te@-u7_585y@lcla)9)0__yr+#)u9_&yourself"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/challenge_yourself'
+app.config['SQLALCHEMY_DATABASE_URI'] = global_database
 db.init_app(app)
 
 mdp = hashlib.sha256()
