@@ -60,28 +60,34 @@ def delete_user(id):
     return {'id': id, 'message': 'user deleted'}
 
 
-"""@app.route('/users/add')
-def insert_user():
-    mdp.update(b"mon mot de passe")
+@app.route("/users/<id>", methods=['PUT'])
+def update_user(id):
+    utilisateur = Utilisateur.query.get(id)
+    if utilisateur is None:
+        return {'id': id, 'message': 'user not found'}
 
-    user1 = Utilisateur(pseudo="cgrace5", mail="cgrace5@monmail.com", password=mdp.hexdigest())
-    db.session.add(user1)
+    if request.json['pseudo'] is not None:
+        utilisateur.pseudo = request.json['pseudo']
+    if request.json['mail'] is not None:
+        utilisateur.mail = request.json['mail']
+    if request.json['password'] is not None:
+        mdp.update(b"" + request.json['password'].encode())
+        utilisateur.password = mdp.hexdigest()
+
     db.session.commit()
 
-    mdp.update(b"mon nouveau mot de passe")
+    return {'id': utilisateur.id, 'pseudo': utilisateur.pseudo, 'mail': utilisateur.mail,
+            'password': utilisateur.password}
 
-    user2 = Utilisateur(pseudo="jeanclaude", mail="jeanclaude@monmail.com", password=mdp.hexdigest())
-    db.session.add(user2)
+
+@app.route("/users/test", methods=['GET'])
+def test_user():
+    utilisateur = Utilisateur.query.filter_by(pseudo="cgraceR").first()
+    if utilisateur is None:
+        return {'id': id, 'message': 'user not found'}
+
+    utilisateur.pseudo = "cgrace5"
+    utilisateur.mail = "cgrace5@monmail.com"
     db.session.commit()
 
-    return "User Created"
-
-
-@app.route("/users/delete/<id>")
-def delete_user(id):
-    # user = Utilisateur.query.filter_by(id=id).first()
-    utilisateur = Utilisateur.query.get_or_404(id)
-    db.session.delete(utilisateur)
-    db.session.commit()
-    return "User deleted with id {}".format(id)
-"""
+    return {'id': utilisateur.id, 'pseudo': utilisateur.pseudo, 'mail': utilisateur.mail, 'password': utilisateur.password}
