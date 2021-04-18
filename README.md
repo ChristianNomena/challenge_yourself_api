@@ -3,11 +3,14 @@ The official API for Challenge Yourself App
 It is an API made with Flask
 ORM : SQLAlchemy
 
-# database
+# local database
 You should create the database if it's not inside your server
 The tables will be created automatically once you run the API
 SGBD : MySQL
 Database Name : challenge_yourself
+
+# global database
+Change the app.config['SQLALCHEMY_DATABASE_URI'] to global_database instead of local_database
 
 # requirements
 You can find all the libraries you need to start the API in the file "requirements.txt"
