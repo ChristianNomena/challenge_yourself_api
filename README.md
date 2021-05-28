@@ -16,7 +16,7 @@ Change the app.config['SQLALCHEMY_DATABASE_URI'] to global_database instead of l
 You can find all the libraries you need to start the API in the file "requirements.txt"
 
 # run
-Execute the "main.py" file to run the API
+Execute the "app.py" file to run the API
 
 # models
 The models represent the structures in database
