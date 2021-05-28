@@ -10,7 +10,7 @@ global_database = 'mysql://ih1xsuhf3bj02xkl:j14jybwp8pwgx0se@ulsq0qqx999wqz84.ch
 
 app = Flask(__name__)
 app.secret_key = "challenge-^05e77o%aki4ivleu$te@-u7_585y@lcla)9)0__yr+#)u9_&yourself"
-app.config['SQLALCHEMY_DATABASE_URI'] = global_database
+app.config['SQLALCHEMY_DATABASE_URI'] = local_database
 db.init_app(app)
 
 mdp = hashlib.sha256()
@@ -78,16 +78,3 @@ def update_user(id):
 
     return {'id': utilisateur.id, 'pseudo': utilisateur.pseudo, 'mail': utilisateur.mail,
             'password': utilisateur.password}
-
-
-@app.route("/users/test", methods=['GET'])
-def test_user():
-    utilisateur = Utilisateur.query.filter_by(pseudo="cgraceR").first()
-    if utilisateur is None:
-        return {'id': id, 'message': 'user not found'}
-
-    utilisateur.pseudo = "cgrace5"
-    utilisateur.mail = "cgrace5@monmail.com"
-    db.session.commit()
-
-    return {'id': utilisateur.id, 'pseudo': utilisateur.pseudo, 'mail': utilisateur.mail, 'password': utilisateur.password}
